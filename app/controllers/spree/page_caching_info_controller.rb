@@ -14,5 +14,16 @@ module Spree
       end
     end
 
+
+    def authenticity_token
+      session[:_csrf_token] ||= SecureRandom.base64(32)
+
+      respond_to do |format|
+        format.js {
+          render :json => { :authenticity_token => session[:_csrf_token] }
+        }
+      end
+    end
+
   end
 end

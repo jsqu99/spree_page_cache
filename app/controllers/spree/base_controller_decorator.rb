@@ -24,4 +24,14 @@ Spree::BaseController.class_eval do
     cookies[:authenticity_token] = session[:_csrf_token] ||= SecureRandom.base64(32)
     cookies[:current_user_id] = current_user.try(:id)
   end
+
+
+  def form_authenticity_token
+    if params[:controller] == "spree/products" && params[:action] == "show"
+      "dummy"
+    else
+      session[:_csrf_token] ||= SecureRandom.base64(32)
+    end
+  end
+
 end

@@ -25,7 +25,7 @@ Spree::BaseController.class_eval do
     cookies[:current_user_id] = current_user.try(:id)
   end
 
-
+  # we might cache the results of this, so don't put someone's good token in the cache
   def form_authenticity_token
     if params[:controller] == "spree/products" && params[:action] == "show"
       "dummy"

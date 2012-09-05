@@ -22,6 +22,7 @@ $(function(){
 
   $.ajax({
     url: '/page_caching_info',
+    type: 'POST',
     cache: false,
     dataType: 'json',
     success: function(data){

@@ -7,10 +7,10 @@ App.isNumeric = function(input) {
 App.fromCookie =  {
 
 	updateDom: function(){
-		var	currentUserId = $.cookie('current_user_id'),
+		var	currentUserPresent = $.cookie('current_user_present'),
 			cartAmount = decodeURIComponent($.cookie('cart_amount'));
 
-		if(App.isNumeric(currentUserId)){
+		if(currentUserPresent == "true"){
 			$('#nav-bar li.logout').show();
 			$('#nav-bar li.account').show();
 		} else {

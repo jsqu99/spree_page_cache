@@ -6,8 +6,8 @@ App.updateCartAmount = function(value) {
   }
 };
 
-App.updateAccountStatusBar = function(value) {
-  if(App.isNumeric(value)){
+App.updateAccountStatusBar = function(current_user_present) {
+  if(current_user_present == "true"){
     $('#nav-bar li.logout').show();
     $('#nav-bar li.account').show();
     $('#nav-bar li.login').hide();
@@ -27,7 +27,7 @@ $(function(){
     dataType: 'json',
     success: function(data){
       App.updateCartAmount(decodeURIComponent(data.cart_amount));
-      App.updateAccountStatusBar(decodeURIComponent(data.current_user_id));
+      App.updateAccountStatusBar(decodeURIComponent(data.current_user_present));
     }
   });
 
